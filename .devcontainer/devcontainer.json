@@ -1,0 +1,22 @@
+// .devcontainer/devcontainer.json
+{
+  "name": "Amplify Gen 2 Codespace",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20", 
+  // or "mcr.microsoft.com/devcontainers/javascript-node:18"
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // AWS Toolkit extension is optional but can be helpful
+        "AmazonWebServices.aws-toolkit-vscode"
+      ]
+    }
+  },
+
+  "features": {
+    // If you want AWS CLI v2 installed
+    "ghcr.io/devcontainers/features/aws-cli:2": {}
+  },
+
+  "postCreateCommand": "npm install -g @aws-amplify/cli@latest"
+}
