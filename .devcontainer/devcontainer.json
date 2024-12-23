@@ -1,22 +1,31 @@
-// .devcontainer/devcontainer.json
 {
-  "name": "Amplify Gen 2 Codespace",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:20", 
-  // or "mcr.microsoft.com/devcontainers/javascript-node:18"
-  
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        // AWS Toolkit extension is optional but can be helpful
-        "AmazonWebServices.aws-toolkit-vscode"
-      ]
+    "name": "AWS Amplify Gen 2 Development",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:18",
+    "features": {
+        "ghcr.io/devcontainers/features/aws-cli:1": {},
+        "ghcr.io/devcontainers/features/git:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "vue.volar",
+                "vue.vscode-typescript-vue-plugin",
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "amazonwebservices.aws-toolkit-vscode"
+            ]
+        }
+    },
+    "forwardPorts": [5173],
+    "postCreateCommand": "npm install -g @aws-amplify/cli@latest && npm install -g @vue/cli",
+    "postAttachCommand": {
+        "server": "npm run dev"
+    },
+    "hostRequirements": {
+        "memory": "8gb"
+    },
+    "remoteUser": "node",
+    "remoteEnv": {
+        "NODE_ENV": "development"
     }
-  },
-
-  "features": {
-    // If you want AWS CLI v2 installed
-    "ghcr.io/devcontainers/features/aws-cli:2": {}
-  },
-
-  "postCreateCommand": "npm install -g @aws-amplify/cli@latest"
 }
